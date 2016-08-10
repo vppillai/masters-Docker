@@ -8,8 +8,8 @@ On a vanilla droplet, run
 
 ```bash
 apt-get update
-apt-get upgrade
-apt-get install git docker.io
+apt-get upgrade -y
+apt-get install git docker.io -y
 ```
 
 Once Git is installed, clone this repo and from within the repo, issue the following command to pull all required images and create a docker image by the name 'myiotdashboard'. 
