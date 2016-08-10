@@ -1,7 +1,7 @@
 FROM ubuntu:16.04
 MAINTAINER vysakhpillai@gmail.com
 
-RUN apt-get update && apt-get install -y openssh-server apache2 supervisor mosquitto-clients mosquitto build-essential vim 
+RUN apt-get update && apt-get install -y apache2 supervisor mosquitto-clients mosquitto build-essential  
 RUN mkdir -p /var/lock/apache2 /var/run/apache2 /var/run/sshd /var/log/supervisor /var/lock/mosquitto /var/run/mosquitto
 
 #apis
@@ -18,10 +18,11 @@ run rm /var/www/api/mdtweet/sendMessage.c
 COPY serve-cgi-bin.conf /etc/apache2/conf-available/serve-cgi-bin.conf
 COPY serve-cgi-bin.conf /etc/apache2/conf-enabled/serve-cgi-bin.conf
 COPY apache2.conf /etc/apache2/apache2.conf
+COPY html /var/www -rf
 RUN a2enmod cgi
 
 COPY mosquitto.conf /etc/mosquitto/mosquitto.conf
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-EXPOSE 22 80 443
+EXPOSE 80 443
 CMD ["/usr/bin/supervisord"]
