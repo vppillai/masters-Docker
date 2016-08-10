@@ -33,7 +33,7 @@ service apache2 stop
 Finally, if you need to attach and access the docker via a shell, execute the following command. 
 
 ```bash
-docker exec -i -t sleepy_murdock /bin/bash
+docker exec -i -t iot_dashboard /bin/bash
 ```
 
 
